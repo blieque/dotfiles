@@ -1,0 +1,52 @@
+# user-added
+#
+# colours!
+alias dir='dir --color=auto'
+alias vdir='vdir --color=auto'
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+
+# listing shizzle
+alias ls='ls --color=auto'
+alias ll='ls -l'
+alias la='ls -A'
+alias lal='ls -al'
+alias lla='lal'
+
+# exiting in style
+alias ecksit='exit'
+alias e='exit'
+
+# megaupgrade
+alias mu='sudo apt-get update && sudo apt-get dist-upgrade && sudo apt-get autoremove'
+
+# git
+alias gits='git status'
+alias gitds='git diff --staged'
+alias gitc='git commit'
+alias gitca='git commit --amend'
+alias gitaa='git add --all'
+alias gitb='git branch'
+alias gitch='git checkout'
+alias gitcho='git checkout --orphan'
+alias gitp='git push'
+alias gitpu='git pull'
+alias gitrh='git reset --hard'
+
+# tools/shortcuts
+alias s='sudo'
+alias c='clear'
+alias v='vim ~/.vimrc'
+alias mx='chmod +x'
+alias ag='apt-get'
+alias cpd='cp --parents'
+alias grep='grep --ignore-case'
+
+# launching + software
+alias hq='/home/b/.hairquest/hairquest.sh'
+alias ut='sudo /opt/utorrent/utserver &'
+alias to='sudo /etc/init.d/nginx reload'
+alias crlf='grep  -rn * | grep -v Binary'
+alias clion='/opt/clion/bin/clion.sh'
+alias sublime='/opt/sublime-text-2/sublime_text'
