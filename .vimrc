@@ -1,108 +1,169 @@
+" un-Bram this software
+set nocompatible
+
+" BUNDLING
+
 " vundle config, bundling
-set nocp
-set rtp+=~/.vim/bundle/vundle/
+set runtimepath+=~/.vim/bundle/vundle/
 call vundle#rc()
+
+" let vundle manage itself
 Bundle 'gmarik/vundle'
 
+" majorly change vim behaviour
 Bundle 'itchyny/lightline.vim'
-Bundle 'nathanaelkane/vim-indent-guides'
-
-Bundle 'vim-scripts/sudo.vim'
-Bundle 'tpope/vim-sleuth'
-Bundle 'mattn/emmet-vim'
-Bundle 'jiangmiao/auto-pairs'
-Bundle 'terryma/vim-multiple-cursors'
 Bundle 'scrooloose/nerdtree'
-"Bundle 'scrooloose/nerdcommenter'
+Bundle 'tpope/vim-sleuth'
+Bundle 'kien/ctrlp.vim'
+
+" make editing easier
+Bundle 'jelera/vim-javascript-syntax'
+Bundle 'jiangmiao/auto-pairs'
+Bundle 'mattn/emmet-vim'
 Bundle 'scrooloose/syntastic'
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'terryma/vim-multiple-cursors'
 Bundle 'Valloric/YouCompleteMe'
 
-"Bundle 'kien/ctrlp.vim'
-
+" make things pretty
+Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'altercation/vim-colors-solarized'
-Plugin 'jelera/vim-javascript-syntax'
+Bundle 'zeis/vim-kolor'
 
-" colours, indentation
+" PLUGIN STUFF
+
+" load emmet
+autocmd FileType html,css EmmetInstall
+
+" colours
 filetype plugin indent on
 syntax enable
-set bg=dark
-let g:solarized_termcolors=256
 
-colo solarized
+set background=dark
+let g:solarized_termcolors = 256
+
+colorscheme solarized
 " retains colours even when reloading .vimrc (no need to reload .gvimrc too)
 if has("gui_running")
-    colo flatland
+    colorscheme flatland
 endif
 
-" setting
-set nu			" line numbers
-set ai			" nice auto-indentation
-set lz			" minimal screen redrawing
-set is			" auto-complete searching
-set ic			" case-insensitive searching
-set cul			" highlight cursor line
-set hls			" highlight search matches
-set wmnu		" wild menu tab completion
-set noswf		" disable swap files
-set wrap lbr	" wrap at spaces between words
-set noet		" tabs, not spaces
-set ts=4		" 4 space-wide tabs
-set sw=4		" shift-width, indentation
-set so=10		" keep at least 10 lines above below cursor, eases scrolling
-set ss=16		" as above, but horizontal and 16 columns
-set tm=450		" quicker key sequences, as default is 1000
-set vi=			" no mo' .viminfo
-set lcs=eol:$,tab:\|∙,trail:∙,extends:…	" fancy tab lines and dots
-set spl=en_gb	" set spellchecking to British English
-set ofu=syntaxcomplete#Complete " suddenly I feel like vim can be taken seriously
-set mouse=a		" i'm casual, k?
-set mousef		" it's like terminator!
-set mh			" hidden mouse for typing
+" SETTING
+" (various vim options to how I like them)
 
-" letting
-let mapleader="'"
+set number                              " line numbers
+set autoindent                          " nice auto-indentation
+set lazyredraw                          " minimal screen redrawing
+set incsearch                           " auto-complete searching
+set ignorecase                          " case-insensitive searching
+set cursorline                          " highlight cursor line
+set modeline                            " let modeslines be used (for root user too)
+set hlsearch                            " highlight search matches
+set wildmenu                            " wild menu tab completion
+set wrap                                " wrap
+set mousef                              " it's like terminator!
+set mouse=a                             " i'm casual, k?
+set mousehide                           " hidden mouse for typing
+set expandtab                           " spaces, not tabs
+set linebreak                           " wrap at spaces between words
+set tabstop=4                           " 4 space-wide tabs
+set shiftwidth=4                        " shift-width, indentation
+set scrolloff=10                        " keep at least 10 lines above below cursor, eases scrolling
+set sidescroll=16                       " as above, but horizontal and 16 columns
+set spelllang=en_gb                     " set spellchecking to british english
+set timeoutlen=450                      " quicker key sequences, as default is 1000
+set viminfo=                            " no mo' .viminfo
+set list                                " use custom special strings
+set listchars=tab:\ \ ,trail:·,extends:… " show dots for trailing spaces, and other stuff
+set omnifunc=syntaxcomplete#Complete    " suddenly i feel like vim can be taken seriously
+
+set noswapfile                          " disable swap files
+
+" LETTING
+" (this is mostly plugin configuration)
+
+" customise leader key
+let mapleader = "'"
+
+" multi-cursor key bindings
+let g:multi_cursor_next_key = '<C-s>'
+let g:multi_cursor_prev_key = '<C-a>'
+let g:multi_cursor_skip_key = '<C-d>'
+let g:multi_cursor_quit_key = '<C-x>'
+
+" emmet key bindings and config
+let g:user_emmet_leader_key = '<Tab>'
+let g:user_emmet_install_global = 0
+let g:user_emmet_mode = 'i'
+let g:user_emmet_settings = {
+\   'html': {
+\     'default_attributes': {
+\       'script': {'src': ''},
+\     },
+\   },
+\   'css' : {
+\     'filters': '',
+\   },
+\ }
+
+" lightline config
+set laststatus=2
 let g:lightline = {
-	  \ 'separator': { 'left': '', 'right': '' },
-	  \ 'subseparator': { 'left': '', 'right': '' },
-	  \ }
-	  " \ 'separator': { 'left': '', 'right': '' },
-	  " \ 'subseparator': { 'left': '•', 'right': '•' },
-let g:user_emmet_leader_key='<Leader><Tab>'
+\   'colorscheme': 'solarized_dark',
+\   'separator': { 'left': '', 'right': '' },
+\   'subseparator': { 'left': '', 'right': '' },
+\ }
 
-let g:multi_cursor_next_key='<C-s>'
-let g:multi_cursor_prev_key='<C-a>'
-let g:multi_cursor_skip_key='<C-d>'
-let g:multi_cursor_quit_key='<C-x>'
-
+" ctrl+p config
+let g:ctrlp_match_window = 'min:1,max:16,results:16'
+let g:ctrlp_open_new_file = 't'
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\~\\music',
-  \ 'file': '\v\.(exe|so|dll)$',
-  \ }
+\   'dir': '\v(\.(git|hg|svn)|music|videos|pictures)$',
+\   'file': '\v\.(so|ip|gz|xz|pg|jpeg|png|gif|docx|doc|ods)@<!$',
+\ }
+"\   'file': '\v\.(so|exe|dll|zip|gz|xz|aac|mp3|m3a|m3u|mp4|m4a|ogg|wav|wma|jpg|jpeg|png|gif|docx|doc|ods)@<!$',
 
-" vim-airline config
-set ls=2
-let g:airline_powerline_fonts=1
-let g:ycm_key_list_select_completion = ['<Tab>']
-nnoremap <S-Tab> <Tab>
+" vim-indent-guides config
+let g:indent_guides_enable_on_vim_startup = 1 " like, wtf?
+let g:indent_guides_auto_colors = 0 " just for gvim
+let g:indent_guides_start_level = 2
+let g:indent_guides_guide_size = 1
+hi IndentGuidesOdd  ctermbg=234
+hi IndentGuidesEven ctermbg=234
 
-" use markdown filetype for .md files
-au BufRead,BufNewFile *.md call MarkdownSettings()
+" MAPPING
 
-" mapping
+" basics
 nore ; :
 noremap x "_d
 noremap <F6> <Esc>:set<Space>spell!<CR>
 inoremap <F6> <Esc>:set<Space>spell!<CR>i<Right>
 
-" easy escape from insert, and easy ending of lines
-inoremap jj <Esc>
-vnoremap ii <Esc>
-imap ,, <End>,<CR>
-imap ;; <End>;<CR>
-imap {{ <End><Space>{<CR>
+" nicer redo
+nmap U :redo<CR>
 
-" moving around, splits, undo, redraw, general leader stuff
-noremap <C-z> <Esc>:u<CR>
+" easy escape from insert/visual mode, and easy ending of lines
+inoremap jj <Esc>
+inoremap JJ <Esc>
+vnoremap ii <Esc>
+vnoremap II <Esc>
+imap ,, <End>,<CR>
+imap ;; <End>;
+imap {{ <End><Space>{<CR>
+imap {{<CR> <End><Space>{<CR><CR>.<CR><Up><End><BS>
+
+" wrap visual selections in pairs of things
+" - copies to "w" register to not overwrite usual yank/delete register
+" - clears register after for security
+vnoremap ( "wdi()<Esc>"wPqwql
+vnoremap { "wdi{}<Esc>"wPqwql
+vnoremap [ "wdi[]<Esc>"wPqwql
+vnoremap < "wdi<><Esc>"wPqwql
+vnoremap " "wdi""<Esc>"wPqwql
+vnoremap ' "wdi''<Esc>"wPqwql
+
+" moving around, splits, undo, [redraw], general leader stuff
+noremap <C-z> u
 noremap <Leader>o <Esc>:tabp<CR>
 noremap <Leader>p <Esc>:tabn<CR>
 noremap <Leader>t <Esc>:tabnew<Space>
@@ -116,11 +177,13 @@ noremap <Leader>n <Esc>:let<Space>@/=""<CR>
 noremap <Leader>h ^
 noremap <Leader>j G
 noremap <Leader>k gg
-nnoremap <Leader>l $
-vnoremap <Leader>l $h
+noremap <Leader>l $
+
+" highlight/replace all occurences of a word
+nnoremap * *N:%s///g<Left><Left>
 
 " copy/paste to/from system keyboard
-map <C-x> "+yy"_d
+map <C-x> "+dd
 map <C-c> "+yy
 map <C-v> "+p
 
@@ -129,13 +192,13 @@ nnoremap <CR> o<ESC>
 nnoremap <S-CR> O<ESC>
 
 " more intuitive movement around files
-noremap <buffer> <silent> k gk
-noremap <buffer> <silent> j gj
-noremap <buffer> <silent> 0 g0
-noremap <buffer> <silent> $ g$
-noremap <buffer> <silent> <Home> g<Home>
-noremap <buffer> <silent> <End> g<End>
-nnoremap A g<End>i
+noremap j gj
+noremap k gk
+noremap 0 g0
+noremap $ g$
+noremap <Home> g<Home>
+noremap <End> g<End>
+nnoremap A g<End>a
 nnoremap I g<Home>i
 
 " more familiar indentation
@@ -150,50 +213,17 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-" easier resizing of splits (_ rather than - because shift is a thing)
+" easier resizing of splits
+" (_ rather than - because shift is a thing)
 nnoremap < <C-w><
 nnoremap > <C-w>>
 nnoremap + <C-w>+
 nnoremap _ <C-w>-
 
-" easier creation of splits
-nnoremap <C-,> :vnew<CR>
-nnoremap <C-.> :right<Space>vnew<CR>
-nnoremap <C-=> :new<CR>
-nnoremap <C--> :below<Space>new<CR>
+" easier opening of new tabs
+nnoremap T :tabnew<Space>
 
-" comment out and in with Ctrl+/
-"vnoremap <C-#>
+" COMMANDS
 
-" GVIM
-
-" change tabs with control + page-up/down
-nmap <C-PageUp> :tabprev<CR>
-nmap <C-PageDown> :tabnext<CR>
-
-" kb scrolling
-noremap <A-j> <C-e>
-noremap <A-k> <C-y>
-nmap <S-Home> v<Home>
-nmap <S-End> v<End>h
-
-inoremap <S-Home> <Esc>lv<Home>
-inoremap <S-End> <Esc>lv<End>
-
-" stuff
-" open multiple tabs with greater ease
-command! -complete=file -nargs=+ Etabs call s:ETW('tabnew', <f-args>)
-command! -complete=file -nargs=+ Ewindows call s:ETW('new', <f-args>)
-command! -complete=file -nargs=+ Evwindows call s:ETW('vnew', <f-args>)
-function! s:ETW(what, ...)
-for f1 in a:000
-	let files = glob(f1)
-		if files == ''
-			execute a:what . ' ' . escape(f1, '\ "')
-		else
-			for f2 in split(files, "\n")
-				execute a:what . ' ' . escape(f2, '\ "')
-			endfor
-		endif
-	endfor
-endfunction
+" use markdown filetype for .md files
+autocmd BufRead,BufNewFile *.md call MarkdownSettings()
