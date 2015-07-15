@@ -107,7 +107,8 @@ let g:user_emmet_settings = {
 \ }
 
 " lightline config
-set laststatus=2
+set laststatus=2    " this is needed for some reason
+set noshowmode      " lightline is showing our mode
 let g:lightline = {
 \   'colorscheme': 'solarized_dark',
 \   'separator': { 'left': '', 'right': '' },
@@ -161,6 +162,7 @@ vnoremap [ "wdi[]<Esc>"wPqwql
 vnoremap < "wdi<><Esc>"wPqwql
 vnoremap " "wdi""<Esc>"wPqwql
 vnoremap ' "wdi''<Esc>"wPqwql
+vnoremap ` "wdi``<Esc>"wPqwql
 
 " moving around, splits, undo, [redraw], general leader stuff
 noremap <C-z> u
@@ -183,9 +185,9 @@ noremap <Leader>l $
 nnoremap * *N:%s///g<Left><Left>
 
 " copy/paste to/from system keyboard
-map <C-x> "+dd
-map <C-c> "+yy
-map <C-v> "+p
+vnoremap <C-x> "+dd
+vnoremap <C-c> "+yy
+vnoremap <C-v> "+p
 
 " add blank lines without entering insert mode
 nnoremap <CR> o<ESC>
