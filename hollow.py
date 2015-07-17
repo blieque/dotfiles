@@ -1,7 +1,38 @@
 """
-j
+
+Hollow Theme
+Blieque Mariguan (@blieque, GitHub and Twitter)
+
+For use with powerline-shell (milkbikis/powerline-shell).
+MIT licensed.
+
 """
+
 class Color(DefaultColor):
+
+    HOME_SPECIAL_DISPLAY = True
+    HOME_BG = 33        # solarised blue
+    HOME_FG = 230       # cream
+    PATH_BG = 235       # dark grey
+    PATH_FG = 246       # light-ish grey
+    CWD_FG = 251        # light grey
+    SEPARATOR_FG = 240  # little-lighter-than-dark-grey grey
+
+    READONLY_BG = 124   # strong red
+    READONLY_FG = 230   # cream
+
+    SSH_BG = 56         # blue-ish purple
+    SSH_FG = 230        # cream
+
+    REPO_CLEAN_BG = 61  # lilac-ish
+    REPO_CLEAN_FG = 230 # cream
+    REPO_DIRTY_BG = 125 # hot pink-ish purple
+    REPO_DIRTY_FG = 230 # cream
+
+    CMD_PASSED_BG = 234 # dark grey
+    CMD_PASSED_FG = 251 # light-ish grey
+    CMD_FAILED_BG = 197 # pink
+    CMD_FAILED_FG = 230 # cream
 
     # START UNUSED
 
@@ -13,38 +44,12 @@ class Color(DefaultColor):
     HOSTNAME_BG = 238
 
     SVN_CHANGES_BG = 148
-    SVN_CHANGES_FG = 22  # dark green
+    SVN_CHANGES_FG = 22
 
-    VIRTUAL_ENV_BG = 35  # a mid-tone green
+    VIRTUAL_ENV_BG = 35
     VIRTUAL_ENV_FG = 00
-
-    # END UNUSED
-
-    HOME_SPECIAL_DISPLAY = True
-    HOME_BG = 33  # blueish
-    HOME_FG = 230  # cream
-    PATH_BG = 235  # dark grey
-    PATH_FG = 246  # light grey
-    CWD_FG = 251  # nearly-white grey
-    SEPARATOR_FG = 240
-
-    READONLY_BG = 124
-    READONLY_FG = 230
-
-    SSH_BG = 56
-    SSH_FG = 230
-
-    REPO_CLEAN_BG = 29   # a light green color
-    REPO_CLEAN_FG = 159  # sewer (solarised) green
-    REPO_CLEAN_FG = 230  # sewer (solarised) green
-    REPO_DIRTY_BG = 125  # pink/red
-    REPO_DIRTY_FG = 219  # white
-    REPO_DIRTY_FG = 230  # white
 
     JOBS_FG = 33
     JOBS_BG = 238
 
-    CMD_PASSED_BG = 234
-    CMD_PASSED_FG = 230
-    CMD_FAILED_BG = 197
-    CMD_FAILED_FG = 230
+    # END UNUSED
