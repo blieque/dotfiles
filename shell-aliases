@@ -1,22 +1,19 @@
-# user-added
-#
 # colours!
-alias dir='dir --color=auto'
-alias vdir='vdir --color=auto'
+alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
 # listing shizzle
-alias ls='ls --color=auto'
+alias l='ls'
 alias ll='ls -l'
 alias la='ls -A'
 alias lal='ls -al'
 alias lla='lal'
 
 # exiting in style
-alias ecksit='exit'
 alias e='exit'
+alias ecksit='exit'
 
 # megaupgrade
 alias mu='sudo apt-get update && sudo apt-get dist-upgrade && sudo apt-get autoremove'
@@ -41,16 +38,18 @@ alias v='vim ~/.vimrc'
 alias mx='chmod +x'
 alias ag='apt-get'
 alias cpd='cp --parents'
+alias xres='[[ -e ~/.Xresources ]] && xrdb -merge ~/.Xresources'
 alias grep='grep --ignore-case'
+alias crlf='grep  -rn * | grep -v Binary'
 
 # launching + software
-alias hq='/home/b/.hairquest/hairquest.sh'
-alias ut='sudo /opt/utorrent/utserver &'
 alias to='sudo /etc/init.d/nginx reload'
-alias ua='sudo apt-get updaet && sudo apt-get dist-upgrade'
-alias nic='$THEOS/bin/nic.pl'
-alias crlf='grep  -rn * | grep -v Binary'
-alias clion='/opt/clion/bin/clion.sh'
 alias sublime='/opt/sublime-text-2/sublime_text'
-alias post='JEKYLL_POST_DATE=`date +%Y-%m-%d` && cp /home/b/documents/jekyll-post-template.md /srv/web/hosts/dev.github.blieque/www/_posts/$JEKYLL_POST_DATE-slug.md && vim /srv/web/hosts/dev.github.blieque/www/_posts/$JEKYLL_POST_DATE-slug.md && cd /srv/web/hosts/dev.github.blieque/www/_posts/'
-alias spf='sudo php5-fpm --nodaemonize --fpm-config /etc/php5/fpm/php-fpm.conf &'
+
+# load user-specific aliases
+aliases_file=~/.config/shell-aliases
+if [[ -e "$aliases_file" &&
+      -f "$aliases_file" &&
+      -r "$aliases_file" ]]; then
+  source "$aliases_file"
+fi

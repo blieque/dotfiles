@@ -23,7 +23,7 @@ Bundle 'mattn/emmet-vim'
 Bundle 'scrooloose/syntastic'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'terryma/vim-multiple-cursors'
-Bundle 'Valloric/YouCompleteMe'
+"Bundle 'Valloric/YouCompleteMe'
 
 " make things pretty
 Bundle 'nathanaelkane/vim-indent-guides'
@@ -74,7 +74,7 @@ set spelllang=en_gb                     " set spellchecking to british english
 set timeoutlen=450                      " quicker key sequences, as default is 1000
 set viminfo=                            " no mo' .viminfo
 set list                                " use custom special strings
-set listchars=tab:\ \ ,trail:·,extends:… " show dots for trailing spaces, and other stuff
+set listchars=tab:\ \ ,trail:�,extends:. " show dots for trailing spaces, and other stuff
 set omnifunc=syntaxcomplete#Complete    " suddenly i feel like vim can be taken seriously
 
 set noswapfile                          " disable swap files
@@ -189,9 +189,12 @@ vnoremap <C-x> "+dd
 vnoremap <C-c> "+yy
 vnoremap <C-v> "+p
 
+" map <C-x> to something else
+nnoremap <C-s> <C-x>
+
 " add blank lines without entering insert mode
-nnoremap <CR> o<ESC>
-nnoremap <S-CR> O<ESC>
+nnoremap <CR> o<Esc>
+nnoremap <S-CR> O<Esc>
 
 " more intuitive movement around files
 noremap j gj
