@@ -71,6 +71,7 @@ set shiftwidth=4                        " shift-width, indentation
 set scrolloff=10                        " keep at least 10 lines above below cursor, eases scrolling
 set sidescroll=16                       " as above, but horizontal and 16 columns
 set spelllang=en_gb                     " set spellchecking to british english
+set virtualedit=onemore                 " cursor can sit on the EOL character
 set timeoutlen=450                      " quicker key sequences, as default is 1000
 set viminfo=                            " no mo' .viminfo
 set list                                " use custom special strings
@@ -92,7 +93,8 @@ let g:multi_cursor_skip_key = '<C-d>'
 let g:multi_cursor_quit_key = '<C-x>'
 
 " emmet key bindings and config
-let g:user_emmet_leader_key = '<Tab>'
+"let g:user_emmet_leader_key = '<Tab>'
+let g:user_emmet_leader_key = ','
 let g:user_emmet_install_global = 0
 let g:user_emmet_mode = 'i'
 let g:user_emmet_settings = {
@@ -148,21 +150,34 @@ inoremap jj <Esc>
 inoremap JJ <Esc>
 vnoremap ii <Esc>
 vnoremap II <Esc>
-imap ,, <End>,<CR>
+"imap ,, <End>,<CR>
 imap ;; <End>;
 imap {{ <End><Space>{<CR>
 imap {{<CR> <End><Space>{<CR><CR>.<CR><Up><End><BS>
 
+" neat find/replace shortcuts
+" - copies to "x" register
+nnoremap <C-o> :%s::g<Left><Left>
+nnoremap <C-n> lbvhe"xy:%s:<C-r>x::g<Left><Left>
+vnoremap <C-n> "xy:%s:<C-r>x::g|norm qxq<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
+
 " wrap visual selections in pairs of things
-" - copies to "w" register to not overwrite usual yank/delete register
+" - copies to "z" register to not overwrite usual yank/delete register
 " - clears register after for security
-vnoremap ( "wdi()<Esc>"wPqwql
-vnoremap { "wdi{}<Esc>"wPqwql
-vnoremap [ "wdi[]<Esc>"wPqwql
-vnoremap < "wdi<><Esc>"wPqwql
-vnoremap " "wdi""<Esc>"wPqwql
-vnoremap ' "wdi''<Esc>"wPqwql
-vnoremap ` "wdi``<Esc>"wPqwql
+" - works even on the end of a line (depends on "set virtualedit=onemore")
+vnoremap ( "zdi()<Esc>"zPqzql
+vnoremap { "zdi{}<Esc>"zPqzql
+vnoremap [ "zdi[]<Esc>"zPqzql
+vnoremap < "zdi<><Esc>"zPqzql
+vnoremap " "zdi""<Esc>"zPqzql
+vnoremap ' "zdi''<Esc>"zPqzql
+vnoremap ` "zdi``<Esc>"zPqzql
+" still allow interaction with other registers
+noremap ¬ "
+
+" ...make normal indentation still work
+vnoremap < <
+vnoremap > >
 
 " moving around, splits, undo, [redraw], general leader stuff
 noremap <C-z> u
@@ -181,13 +196,12 @@ noremap <Leader>j G
 noremap <Leader>k gg
 noremap <Leader>l $
 
-" highlight/replace all occurences of a word
-nnoremap * *N:%s///g<Left><Left>
-
 " copy/paste to/from system keyboard
 vnoremap <C-x> "+dd
 vnoremap <C-c> "+yy
-vnoremap <C-v> "+p
+nnoremap <C-x> "+dd
+nnoremap <C-c> "+yy
+nnoremap <C-v> "+p
 
 " add blank lines without entering insert mode
 nnoremap <CR> o<ESC>
@@ -199,8 +213,10 @@ noremap k gk
 noremap 0 g0
 noremap $ g$
 noremap <Home> g<Home>
+noremap <Home><Home> ^
 noremap <End> g<End>
-nnoremap A g<End>a
+noremap <End><End> $
+"nnoremap A g<End>a
 nnoremap I g<Home>i
 
 " more familiar indentation
@@ -227,5 +243,14 @@ nnoremap T :tabnew<Space>
 
 " COMMANDS
 
-" use markdown filetype for .md files
-autocmd BufRead,BufNewFile *.md call MarkdownSettings()
+" use markdown filetype for markdown
+autocmd BufRead,BufNewFile *.md set nonumber ft=markdown
+
+" show ruler for python
+autocmd BufRead,BufNewFile *.py set colorcolumn=80 textwidth=79
+
+" show ruler for some languages
+autocmd BufRead,BufNewFile *.js,*.css,*.rb,*.php,*.sh,*.md,*.vimrc set colorcolumn=81 textwidth=80
+
+" turn off wrapping for some languages
+autocmd BufRead,BufNewFile *.html,*.css set nowrap

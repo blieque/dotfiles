@@ -1,8 +1,6 @@
 # user-added
 #
 # colours!
-alias dir='dir --color=auto'
-alias vdir='vdir --color=auto'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
@@ -49,8 +47,8 @@ alias ut='sudo /opt/utorrent/utserver &'
 alias to='sudo /etc/init.d/nginx reload'
 alias ua='sudo apt-get updaet && sudo apt-get dist-upgrade'
 alias nic='$THEOS/bin/nic.pl'
-alias crlf='grep  -rn * | grep -v Binary'
+alias crlf='grep  -rl * | grep -v Binary'
 alias clion='/opt/clion/bin/clion.sh'
 alias sublime='/opt/sublime-text-2/sublime_text'
-alias post='JEKYLL_POST_DATE=`date +%Y-%m-%d` && cp /home/b/documents/jekyll-post-template.md /srv/web/hosts/dev.github.blieque/www/_posts/$JEKYLL_POST_DATE-slug.md && vim /srv/web/hosts/dev.github.blieque/www/_posts/$JEKYLL_POST_DATE-slug.md && cd /srv/web/hosts/dev.github.blieque/www/_posts/'
-alias spf='sudo php5-fpm --nodaemonize --fpm-config /etc/php5/fpm/php-fpm.conf &'
+alias post='JEKYLL_POST_DATE=`date +%Y-%m-%d` && cp /home/b/documents/jekyll-post-template.md /srv/hosts/dev.github.blieque/_posts/$JEKYLL_POST_DATE-slug.md && vim /srv/hosts/dev.github.blieque/_posts/$JEKYLL_POST_DATE-slug.md && cd /srv/hosts/dev.github.blieque/_posts/'
+alias spf='sudo php5-fpm --fpm-config /etc/php5/fpm/php-fpm.conf &'
