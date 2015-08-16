@@ -14,10 +14,6 @@ A selection of dotfiles and other little Linux scripty things.
 
     * `solarized.vim` is almost exactly [`Solarized for Vim`](https://github.com/altercation/vim-colors-solarized), but with a couple of my own tweaks.
 
-* `plugin/` is a Vim plugin directory. Place this directory and its contents in your `~/.vim/` directory to enable some extra functionality.
-
-    * `functions.vim` contains a function for changing Vim settings when editing Markdown documents. If you don't have a copy of this in the right place on your machine, my `.vimrc` will throw the occasional error.
-
 * `themes/` holds themes I have written for [Powerline Shell](https://github.com/blieque/powerline-shell).
 
     * `hollow.py` is a theme I made for Powerline Shell. I used the name Hollow because it was listed as a synonym of "meaningless", and the name of this theme is just that. To use the theme, clone the `powerline-shell` repository, place `hollow.py` in the `themes` directory, and change the `THEME` line in `config.py` to `THEME = 'hollow'`. Run the `install.py` script and then use the newly generated `powerline-shell.py` script.
