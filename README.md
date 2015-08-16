@@ -12,7 +12,7 @@ A selection of dotfiles and other little Linux scripty things.
 
 * `colors/` is a Vim colorscheme directory. Place this directory and its contents in your `~/.vim/` directory to enjoy some nice new colours.
 
-    * `solarized.vim` is almost exactly [`Solarized for Vim`](https://github.com/altercation/vim-colors-solarized), but with a couple of my own tweaks.
+    * `solarized.vim` is almost exactly [*Solarized for Vim*](https://github.com/altercation/vim-colors-solarized), but with a couple of my own tweaks.
 
 * `themes/` holds themes I have written for [Powerline Shell](https://github.com/blieque/powerline-shell).
 
