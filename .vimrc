@@ -23,7 +23,7 @@ Bundle 'mattn/emmet-vim'
 Bundle 'scrooloose/syntastic'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'terryma/vim-multiple-cursors'
-"Bundle 'Valloric/YouCompleteMe'
+Bundle 'Valloric/YouCompleteMe'
 
 " make things pretty
 Bundle 'nathanaelkane/vim-indent-guides'
@@ -33,7 +33,7 @@ Bundle 'zeis/vim-kolor'
 " PLUGIN STUFF
 
 " load emmet
-autocmd FileType html,css EmmetInstall
+autocmd FileType html,css,scss,sass,markdown EmmetInstall
 
 " colours
 filetype plugin indent on
@@ -60,11 +60,11 @@ set cursorline                          " highlight cursor line
 set modeline                            " let modeslines be used (for root user too)
 set hlsearch                            " highlight search matches
 set wildmenu                            " wild menu tab completion
-set wrap                                " wrap
 set mousef                              " it's like terminator!
 set mouse=a                             " i'm casual, k?
 set mousehide                           " hidden mouse for typing
 set expandtab                           " spaces, not tabs
+set nowrap                              " disable wrapping by default
 set linebreak                           " wrap at spaces between words
 set tabstop=4                           " 4 space-wide tabs
 set shiftwidth=4                        " shift-width, indentation
@@ -75,7 +75,7 @@ set virtualedit=onemore                 " cursor can sit on the EOL character
 set timeoutlen=450                      " quicker key sequences, as default is 1000
 set viminfo=                            " no mo' .viminfo
 set list                                " use custom special strings
-set listchars=tab:\ \ ,trail:·,extends:. " show dots for trailing spaces, and other stuff
+set listchars=tab:\ \ ,trail:Â·,extends:â€¦ " show dots for trailing spaces, and other stuff
 set omnifunc=syntaxcomplete#Complete    " suddenly i feel like vim can be taken seriously
 
 set noswapfile                          " disable swap files
@@ -105,6 +105,9 @@ let g:user_emmet_settings = {
 \   },
 \   'css' : {
 \     'filters': '',
+\   },
+\   'sass' : {
+\     'filters': 'fc',
 \   },
 \ }
 
@@ -136,9 +139,14 @@ hi IndentGuidesEven ctermbg=234
 
 " MAPPING
 
-" basics
+" just naice
 nore ; :
+
+" black-hole delete
 noremap x "_d
+nnoremap xx "_dd
+
+" spellchecking enable/disable
 noremap <F6> <Esc>:set<Space>spell!<CR>
 inoremap <F6> <Esc>:set<Space>spell!<CR>i<Right>
 
@@ -151,29 +159,32 @@ inoremap JJ <Esc>
 vnoremap ii <Esc>
 vnoremap II <Esc>
 "imap ,, <End>,<CR>
-imap ;; <End>;
-imap {{ <End><Space>{<CR>
-imap {{<CR> <End><Space>{<CR><CR>.<CR><Up><End><BS>
+inoremap ;; <End>;
+" for writing liquid
+inoremap {% {%<Space><Space>%}<Left><Left><Left>
+inoremap {<CR> <End><Space>{<CR>.<CR><BS>}<Up><End><BS>
+inoremap {{<CR> <End><Space>{<CR><CR>.<CR><BS><CR>}<Up><Up><End><BS>
 
 " neat find/replace shortcuts
 " - copies to "x" register
+vnoremap * y/<C-r>"<CR>N
 nnoremap <C-o> :%s::g<Left><Left>
-nnoremap <C-n> lbvhe"xy:%s:<C-r>x::g<Left><Left>
-vnoremap <C-n> "xy:%s:<C-r>x::g|norm qxq<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
+vnoremap <C-o> :s::g<Left><Left>
+nnoremap <C-n> viw"xy:%s:<C-r>x::g<Left><Left>
+vnoremap <C-n> "xy:%s:<C-r>x::g<Left><Left>
 
 " wrap visual selections in pairs of things
 " - copies to "z" register to not overwrite usual yank/delete register
-" - clears register after for security
 " - works even on the end of a line (depends on "set virtualedit=onemore")
-vnoremap ( "zdi()<Esc>"zPqzql
-vnoremap { "zdi{}<Esc>"zPqzql
-vnoremap [ "zdi[]<Esc>"zPqzql
-vnoremap < "zdi<><Esc>"zPqzql
-vnoremap " "zdi""<Esc>"zPqzql
-vnoremap ' "zdi''<Esc>"zPqzql
-vnoremap ` "zdi``<Esc>"zPqzql
+vnoremap ( "zdi()<Esc>"zPl
+vnoremap { "zdi{}<Esc>"zPl
+vnoremap [ "zdi[]<Esc>"zPl
+vnoremap < "zdi<><Esc>"zPl
+vnoremap " "zdi""<Esc>"zPl
+vnoremap ' "zdi''<Esc>"zPl
+vnoremap ` "zdi``<Esc>"zPl
 " still allow interaction with other registers
-noremap ¬ "
+noremap Â¬ "
 
 " ...make normal indentation still work
 vnoremap < <
@@ -189,7 +200,6 @@ noremap <Leader>rv :so<Space>~/.vimrc<CR>
 noremap <Leader>rg :so<Space>~/.gvimrc<CR>
 noremap <Leader>vv :tabnew<Space>~/.vimrc<CR>
 noremap <Leader>vg :tabnew<Space>~/.gvimrc<CR>
-noremap <Leader>v <C-v>
 noremap <Leader>n <Esc>:let<Space>@/=""<CR>
 noremap <Leader>h ^
 noremap <Leader>j G
@@ -197,18 +207,15 @@ noremap <Leader>k gg
 noremap <Leader>l $
 
 " copy/paste to/from system keyboard
-vnoremap <C-x> "+dd
-vnoremap <C-c> "+yy
-nnoremap <C-x> "+dd
-nnoremap <C-c> "+yy
-nnoremap <C-v> "+p
-
-" map <C-x> to something else
-nnoremap <C-s> <C-x>
+vnoremap <Leader>x "+dd
+vnoremap <Leader>c "+yy
+nnoremap <Leader>x "+dd
+nnoremap <Leader>c "+yy
+nnoremap <Leader>v "+p
 
 " add blank lines without entering insert mode
-nnoremap <CR> o<Esc>
-nnoremap <S-CR> O<Esc>
+nnoremap <CR> o<ESC>
+nnoremap <S-CR> O<ESC>
 
 " more intuitive movement around files
 noremap j gj
@@ -247,13 +254,13 @@ nnoremap T :tabnew<Space>
 " COMMANDS
 
 " use markdown filetype for markdown
-autocmd BufRead,BufNewFile *.md set nonumber ft=markdown
+autocmd BufRead,BufNewFile *.md,*.markdown set nonumber ft=markdown
 
 " show ruler for python
 autocmd BufRead,BufNewFile *.py set colorcolumn=80 textwidth=79
 
 " show ruler for some languages
-autocmd BufRead,BufNewFile *.js,*.css,*.rb,*.php,*.sh,*.md,*.vimrc set colorcolumn=81 textwidth=80
+autocmd BufRead,BufNewFile *.js,*.css,*.rb,*.php,*.sh,*.vimrc set colorcolumn=81 textwidth=80
 
-" turn off wrapping for some languages
-autocmd BufRead,BufNewFile *.html,*.css set nowrap
+" turn on wrapping for some languages
+autocmd BufRead,BufNewFile *.md,*.markdown set wrap
