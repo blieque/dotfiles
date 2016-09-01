@@ -23,7 +23,10 @@ Bundle 'mattn/emmet-vim'
 Bundle 'scrooloose/syntastic'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'terryma/vim-multiple-cursors'
+" hot damn
 Bundle 'Valloric/YouCompleteMe'
+Bundle 'SirVer/ultisnips'
+Bundle 'honza/vim-snippets'
 
 " make things pretty
 Bundle 'nathanaelkane/vim-indent-guides'
@@ -65,6 +68,7 @@ set mouse=a                             " i'm casual, k?
 set mousehide                           " hidden mouse for typing
 set expandtab                           " spaces, not tabs
 set nowrap                              " disable wrapping by default
+set whichwrap+=h,l,<,>,[,]              " easily wrap cursor to next and previous lines
 set linebreak                           " wrap at spaces between words
 set tabstop=4                           " 4 space-wide tabs
 set shiftwidth=4                        " shift-width, indentation
@@ -115,10 +119,10 @@ let g:user_emmet_settings = {
 set laststatus=2    " this is needed for some reason
 set noshowmode      " lightline is showing our mode
 let g:lightline = {
-\   'colorscheme': 'solarized_dark',
 \   'separator': { 'left': '', 'right': '' },
 \   'subseparator': { 'left': '', 'right': '' },
 \ }
+"\   'colorscheme': 'solarized_dark',
 
 " ctrl+p config
 let g:ctrlp_match_window = 'min:1,max:16,results:16'
@@ -136,6 +140,16 @@ let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
 hi IndentGuidesOdd  ctermbg=234
 hi IndentGuidesEven ctermbg=234
+
+" youcompleteme config
+let g:ycm_key_list_previous_completion = ['<Up>']
+
+" ultisnips config
+let g:UltiSnipsExpandTrigger="<S-Tab>"
+let g:UltiSnipsJumpForwardTrigger="<Tab>"
+let g:UltiSnipsJumpBackwardTrigger="<C-z>"
+let g:UltiSnipsEditSplit="vertical"
+let g:UltiSnipsSnippetDirectories=["snips", "UltiSnips"]
 
 " MAPPING
 
@@ -162,8 +176,8 @@ vnoremap II <Esc>
 inoremap ;; <End>;
 " for writing liquid
 inoremap {% {%<Space><Space>%}<Left><Left><Left>
-inoremap {<CR> <End><Space>{<CR>.<CR><BS>}<Up><End><BS>
-inoremap {{<CR> <End><Space>{<CR><CR>.<CR><BS><CR>}<Up><Up><End><BS>
+imap fn<Tab> function(){<CR><Up><End><Left><Left>
+imap fn<Tab><Tab> function(){<CR>
 
 " neat find/replace shortcuts
 " - copies to "x" register
