@@ -10,10 +10,9 @@ call vundle#rc()
 " let vundle manage itself
 Bundle 'gmarik/vundle'
 
-" majorly change vim behaviour
+" change vim behaviour
 Bundle 'itchyny/lightline.vim'
 Bundle 'scrooloose/nerdtree'
-Bundle 'tpope/vim-sleuth'
 Bundle 'kien/ctrlp.vim'
 
 " make editing easier
@@ -23,12 +22,13 @@ Bundle 'mattn/emmet-vim'
 Bundle 'scrooloose/syntastic'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'terryma/vim-multiple-cursors'
+Bundle 'tpope/vim-sleuth'
 " hot damn
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'SirVer/ultisnips'
 Bundle 'honza/vim-snippets'
 
-" make things pretty
+" make things perty
 Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'zeis/vim-kolor'
@@ -138,8 +138,8 @@ let g:indent_guides_enable_on_vim_startup = 1 " like, wtf?
 let g:indent_guides_auto_colors = 0 " just for gvim
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
-hi IndentGuidesOdd  ctermbg=234
-hi IndentGuidesEven ctermbg=234
+hi IndentGuidesOdd  ctermbg=235
+hi IndentGuidesEven ctermbg=235
 
 " youcompleteme config
 let g:ycm_key_list_previous_completion = ['<Up>']
@@ -205,7 +205,6 @@ vnoremap < <
 vnoremap > >
 
 " moving around, splits, undo, [redraw], general leader stuff
-noremap <C-z> u
 noremap <Leader>o <Esc>:tabp<CR>
 noremap <Leader>p <Esc>:tabn<CR>
 noremap <Leader>t <Esc>:tabnew<Space>

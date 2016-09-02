@@ -40,7 +40,7 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 # powerline stuff
 
 function powerline_precmd() {
-	PS1="$(~/source/powerline-shell/powerline-shell.py $? --shell zsh 2> /dev/null)"
+	PS1="$(~/Source/powerline-shell/powerline-shell.py $? --shell zsh 2> /dev/null)"
 }
 
 function install_powerline_precmd() {

@@ -1,15 +1,15 @@
 # user-added
-#
+
 # colours!
-alias grep='grep --color=auto'
+alias grep='grep --color=auto --ignore-case'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
 # listing shizzle
-alias ls='ls --color=auto'
+alias ls='ls -GpFh'
 alias ll='ls -l'
 alias la='ls -A'
-alias lal='ls -al'
+alias lal='ls -Al'
 alias lla='lal'
 
 # exiting in style
@@ -21,9 +21,11 @@ alias mu='sudo apt-get update && sudo apt-get dist-upgrade && sudo apt-get autor
 
 # git
 alias gits='git status'
+alias gitd='git diff'
 alias gitds='git diff --staged'
 alias gitc='git commit'
 alias gitca='git commit --amend'
+alias gita='git add'
 alias gitaa='git add --all'
 alias gitb='git branch'
 alias gitch='git checkout'
@@ -45,7 +47,6 @@ alias v='vim ~/.vimrc'
 alias mx='chmod +x'
 alias ag='apt-get'
 alias cpd='cp --parents'
-alias grep='grep --ignore-case'
 alias spf='sudo php5-fpm --fpm-config /etc/php5/fpm/php-fpm.conf &'
 alias mit='cp /home/b/documents/resources/MIT-LICENSE.md LICENSE.md'
 
@@ -53,7 +54,7 @@ alias mit='cp /home/b/documents/resources/MIT-LICENSE.md LICENSE.md'
 alias hq='/home/b/.hairquest/hairquest.sh'
 alias ut='sudo /opt/utorrent/utserver &'
 alias to='sudo systemctl reload nginx'
-alias nic='$THEOS/bin/nic.pl'
+alias vim='mvim -v'
 alias crlf='grep  -rl * | grep -v Binary'
 alias clion='/opt/clion/bin/clion.sh'
 alias sublime='/opt/sublime-text-2/sublime_text'
