@@ -1,18 +1,18 @@
 priority 50
 
-snippet fn "function(){}" w
+snippet fn "function(){}"
 function(${1}){
     ${2}
 }${3}
 endsnippet
 
-snippet f= "() => {}" w
+snippet f= "() => {}"
 (${1}) => {
     ${2}
 }${3}
 endsnippet
 
-snippet class "class _ extends _ {}" w
+snippet class "class _ extends _ {}"
 class ${1:_}${2: extends ${3:_}} {
 
     constructor(${4}) {
@@ -21,4 +21,16 @@ class ${1:_}${2: extends ${3:_}} {
     }
 
 }
+endsnippet
+
+snippet for "for"
+for (let ${1:i} = 0; $1 < ${2:${3:_}.length}; $1++) {
+    ${4}
+}${5}
+endsnippet
+
+snippet forr "reversed for"
+for (let ${1:i} = ${2:${3:_}.length}; $1 > 0; $1--) {
+    ${4}
+}${5}
 endsnippet
