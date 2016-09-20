@@ -5,6 +5,8 @@ export CLICOLOR=1
 export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 export EDITOR='mvim -v'
 
+PATH="$PATH:~/Source/bin"
+
 autoload -Uz promptinit
 promptinit
 prompt adam1

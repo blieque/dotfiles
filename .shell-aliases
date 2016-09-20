@@ -21,6 +21,7 @@ alias mu='sudo apt-get update && sudo apt-get dist-upgrade && sudo apt-get autor
 
 # git
 alias gits='git status'
+alias gitl='git log'
 alias gitd='git diff'
 alias gitds='git diff --staged'
 alias gitc='git commit'
@@ -32,7 +33,7 @@ alias gitch='git checkout'
 alias gitcho='git checkout --orphan'
 alias gitp='git push'
 alias gitpl='git pull'
-alias gitrh='git reset --hard'
+alias gitr='git reset'
 
 # jekyll
 alias post='JEKYLL_POST_DATE=`date +%Y-%m-%d` && cp /home/b/documents/jekyll-post-template.md /srv/hosts/dev.github.blieque/_posts/$JEKYLL_POST_DATE-slug.md && vim /srv/hosts/dev.github.blieque/_posts/$JEKYLL_POST_DATE-slug.md && cd /srv/hosts/dev.github.blieque/_posts/'

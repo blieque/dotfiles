@@ -17,6 +17,7 @@ Bundle 'kien/ctrlp.vim'
 
 " make editing easier
 Bundle 'jelera/vim-javascript-syntax'
+Bundle 'digitaltoad/vim-pug'
 Bundle 'jiangmiao/auto-pairs'
 Bundle 'mattn/emmet-vim'
 Bundle 'scrooloose/syntastic'
@@ -81,7 +82,6 @@ set viminfo=                            " no mo' .viminfo
 set list                                " use custom special strings
 set listchars=tab:\ \ ,trail:·,extends:… " show dots for trailing spaces, and other stuff
 set omnifunc=syntaxcomplete#Complete    " suddenly i feel like vim can be taken seriously
-
 set noswapfile                          " disable swap files
 
 " LETTING
@@ -121,7 +121,11 @@ set noshowmode      " lightline is showing our mode
 let g:lightline = {
 \   'separator': { 'left': '', 'right': '' },
 \   'subseparator': { 'left': '', 'right': '' },
+\   'active': {
+\      'right': [ [ 'lineinfo' ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype', 'syntastic' ] ]
+\    }
 \ }
+"\      'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ], ['ctrlpmark'] ],
 "\   'colorscheme': 'solarized_dark',
 
 " ctrl+p config
@@ -140,6 +144,13 @@ let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
 hi IndentGuidesOdd  ctermbg=235
 hi IndentGuidesEven ctermbg=235
+
+" syntastic config
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_mode_map = { 'passive_filetypes': ['html'] }
 
 " youcompleteme config
 let g:ycm_key_list_previous_completion = ['<Up>']
@@ -174,10 +185,11 @@ vnoremap ii <Esc>
 vnoremap II <Esc>
 "imap ,, <End>,<CR>
 inoremap ;; <End>;
-" for writing liquid
-inoremap {% {%<Space><Space>%}<Left><Left><Left>
+" these two are better done with snippets
 imap fn<Tab> function(){<CR><Up><End><Left><Left>
 imap fn<Tab><Tab> function(){<CR>
+" for writing liquid
+inoremap {% {%<Space><Space>%}<Left><Left><Left>
 
 " neat find/replace shortcuts
 " - copies to "x" register
@@ -266,14 +278,12 @@ nnoremap T :tabnew<Space>
 
 " COMMANDS
 
-" use markdown filetype for markdown
-autocmd BufRead,BufNewFile *.md,*.markdown set nonumber ft=markdown
+" use markdown filetype and wrap for markdown
+autocmd BufRead,BufNewFile *.md,*.markdown set ft=markdown wrap
 
 " show ruler for python
 autocmd BufRead,BufNewFile *.py set colorcolumn=80 textwidth=79
 
 " show ruler for some languages
 autocmd BufRead,BufNewFile *.js,*.css,*.rb,*.php,*.sh,*.vimrc set colorcolumn=81 textwidth=80
-
-" turn on wrapping for some languages
-autocmd BufRead,BufNewFile *.md,*.markdown set wrap
+autocmd BufRead,BufNewFile *.html,*.htm set colorcolumn=121 textwidth=0
