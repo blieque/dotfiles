@@ -110,6 +110,9 @@ let g:user_emmet_settings = {
 \   'css' : {
 \     'filters': '',
 \   },
+\   'scss' : {
+\     'filters': 'fc',
+\   },
 \   'sass' : {
 \     'filters': 'fc',
 \   },
