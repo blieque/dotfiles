@@ -1,11 +1,9 @@
 # set up the prompt
 
+if [[ -f ~/.mac-shell-rc ]]; then
+	source ~/.mac-shell-rc
+fi
 source ~/.shell-aliases
-export CLICOLOR=1
-export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
-export EDITOR='mvim -v'
-
-PATH="$PATH:~/Source/bin"
 
 autoload -Uz promptinit
 promptinit
@@ -41,8 +39,12 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
 # powerline stuff
 
+if [[ "text$powerline_script" == "text" ]]; then
+	powerline_script="~/source/python/powerline-shell/powerline-shell.py"
+fi
+
 function powerline_precmd() {
-	PS1="$(~/Source/powerline-shell/powerline-shell.py $? --shell zsh 2> /dev/null)"
+	PS1=`$powerline_script --shell zsh`
 }
 
 function install_powerline_precmd() {

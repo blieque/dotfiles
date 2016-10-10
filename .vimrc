@@ -223,7 +223,7 @@ vnoremap > >
 noremap <Leader>o <Esc>:tabp<CR>
 noremap <Leader>p <Esc>:tabn<CR>
 noremap <Leader>t <Esc>:tabnew<Space>
-noremap <Leader>r :redr<CR>
+noremap <Leader>r :redr!<CR>
 noremap <Leader>rv :so<Space>~/.vimrc<CR>
 noremap <Leader>rg :so<Space>~/.gvimrc<CR>
 noremap <Leader>vv :tabnew<Space>~/.vimrc<CR>
