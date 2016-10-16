@@ -1,11 +1,4 @@
-# set up the prompt
-
-source ~/.shell-aliases
-export CLICOLOR=1
-export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
-export EDITOR='mvim -v'
-
-PATH="$PATH:~/Source/bin"
+[[ -f ~/.profile ]] && source ~/.profile
 
 autoload -Uz promptinit
 promptinit
@@ -42,16 +35,16 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 # powerline stuff
 
 function powerline_precmd() {
-	PS1="$(~/Source/powerline-shell/powerline-shell.py $? --shell zsh 2> /dev/null)"
+    PS1="$(~/source/python/powerline-shell/powerline-shell.py $? --shell zsh 2> /dev/null)"
 }
 
 function install_powerline_precmd() {
-	for s in "${precmd_functions[@]}"; do
-		if [ "$s" = "powerline_precmd" ]; then
-			return
-		fi
-	done
-	precmd_functions+=(powerline_precmd)
+    for s in "${precmd_functions[@]}"; do
+        if [ "$s" = "powerline_precmd" ]; then
+            return
+        fi
+    done
+    precmd_functions+=(powerline_precmd)
 }
 
 install_powerline_precmd

@@ -26,6 +26,7 @@ Bundle 'terryma/vim-multiple-cursors'
 Bundle 'tpope/vim-sleuth'
 " hot damn
 Bundle 'Valloric/YouCompleteMe'
+Bundle 'rdnetto/YCM-Generator'
 Bundle 'SirVer/ultisnips'
 Bundle 'honza/vim-snippets'
 
@@ -145,8 +146,8 @@ let g:indent_guides_enable_on_vim_startup = 1 " like, wtf?
 let g:indent_guides_auto_colors = 0 " just for gvim
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
-hi IndentGuidesOdd  ctermbg=235
-hi IndentGuidesEven ctermbg=235
+hi IndentGuidesOdd  ctermbg=234
+hi IndentGuidesEven ctermbg=234
 
 " syntastic config
 let g:syntastic_always_populate_loc_list = 1
@@ -157,6 +158,7 @@ let g:syntastic_mode_map = { 'passive_filetypes': ['html'] }
 
 " youcompleteme config
 let g:ycm_key_list_previous_completion = ['<Up>']
+let g:ycm_global_ycm_extra_conf = "~/.ycm_extra_conf.py"
 
 " ultisnips config
 let g:UltiSnipsExpandTrigger="<S-Tab>"
@@ -288,5 +290,5 @@ autocmd BufRead,BufNewFile *.md,*.markdown set ft=markdown wrap
 autocmd BufRead,BufNewFile *.py set colorcolumn=80 textwidth=79
 
 " show ruler for some languages
-autocmd BufRead,BufNewFile *.js,*.css,*.rb,*.php,*.sh,*.vimrc set colorcolumn=81 textwidth=80
+autocmd BufRead,BufNewFile *.js,*.css,*.rb,*.php,*.sh,*.c,*.h,.vimrc set colorcolumn=81 textwidth=80
 autocmd BufRead,BufNewFile *.html,*.htm set colorcolumn=121 textwidth=0

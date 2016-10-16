@@ -8,6 +8,8 @@ A selection of dotfiles and other little Linux scripty things.
 
     * `.gvimrc` is less impressive. It loads a session file if it finds one, and sets the font to Terminus at 9 pt. It also includes some key mappings that aren't possible in terminal Vim sue to the way modifiers are handled. Place this file in your home directory (`~`) to use.
 
+    * `.bashrc` is a configuration script for Bash. The `PS1` is just about the only exciting part.
+
     * `.zshrc` is a configuration script for Zsh, a great alternative to the usual Bash shell. The script makes tab completion significantly better and loads `powerline-shell`. Place this file in your home directory (`~`) to use.
 
     * `.shell-aliases` is a collection of handy aliases for commands that will work with Bash and Zsh, and likely some other shells too. To use it globally (with all users), rename it to `shell-aliases`, place it in `/etc`, and add `source /etc/shell-aliases` to `/etc/profile`. You'll need root permissions to do this, mind.
