@@ -12,6 +12,12 @@ snippet f= "() => {}"
 }${3}
 endsnippet
 
+snippet cf "_() {}"
+${1}(${2}) => {
+    ${3}
+}${4}
+endsnippet
+
 snippet class "class _ extends _ {}"
 class ${1:_}${2: extends ${3:_}} {
 
@@ -21,6 +27,12 @@ class ${1:_}${2: extends ${3:_}} {
     }
 
 }
+endsnippet
+
+snippet doc "documentation comment"
+/**
+ * ${1}
+ */
 endsnippet
 
 snippet for "for"
@@ -33,4 +45,8 @@ snippet forr "reversed for"
 for (let ${1:i} = ${2:${3:_}.length}; $1 > 0; $1--) {
     ${4}
 }${5}
+endsnippet
+
+snippet log
+console.log(${1})
 endsnippet

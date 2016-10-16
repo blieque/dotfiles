@@ -14,6 +14,8 @@ A selection of dotfiles and other little Linux scripty things.
 
     * `.shell-aliases` is a collection of handy aliases for commands that will work with Bash and Zsh, and likely some other shells too. To use it globally (with all users), rename it to `shell-aliases`, place it in `/etc`, and add `source /etc/shell-aliases` to `/etc/profile`. You'll need root permissions to do this, mind.
 
+    * `.mac-shell-rc` is more shell configuration for Bash/Zsh specifically for macOS environments.
+
 * **Repository scripts**
 
     * `fetch.sh` will copy the active configuration files from your home directory to the repository. This is mostly to make updating the repository easier for me.
