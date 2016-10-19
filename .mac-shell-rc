@@ -1,8 +1,10 @@
 export CLICOLOR=1
 export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 export EDITOR='mvim -v'
-export PATH="$PATH:/usr/local/bin:/usr/local/sbin:~/Source/bin"
+export PATH="$PATH":/usr/local/bin:/usr/local/sbin:~/Source/bin
 
-if [[ "text$powerline_script" == "text" ]]; then
-    powerline_script="/Users/christopherisaac/Source/powerline-shell/powerline-shell.py"
+alias vim='mvim -v'
+
+if [[ "$powerline_script" == "" ]]; then
+    powerline_script=~/Source/powerline-shell/powerline-shell.py
 fi
