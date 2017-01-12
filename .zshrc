@@ -9,6 +9,13 @@ autoload -Uz promptinit
 promptinit
 prompt adam1
 
+if [[ `uname` == 'Darwin' ]]; then
+	bindkey -e
+	bindkey "${terminfo[khome]}" beginning-of-line
+	bindkey "${terminfo[kend]}" end-of-line
+	bindkey "${terminfo[kdch1]}" delete-char
+fi
+
 setopt histignorealldups sharehistory
 
 # keep 1000 lines of history within the shell and save it to ~/.zsh_history:

@@ -16,11 +16,11 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'kien/ctrlp.vim'
 
 " make editing easier
-Bundle 'jelera/vim-javascript-syntax'
+"Bundle 'jelera/vim-javascript-syntax'
 Bundle 'digitaltoad/vim-pug'
 Bundle 'jiangmiao/auto-pairs'
 Bundle 'mattn/emmet-vim'
-Bundle 'scrooloose/syntastic'
+Bundle 'vim-syntastic/syntastic'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'terryma/vim-multiple-cursors'
 Bundle 'tpope/vim-sleuth'
@@ -30,14 +30,25 @@ Bundle 'SirVer/ultisnips'
 Bundle 'honza/vim-snippets'
 
 " make things perty
+Bundle 'StanAngeloff/php.vim'
+Bundle 'pangloss/vim-javascript'
 Bundle 'nathanaelkane/vim-indent-guides'
+
 Bundle 'altercation/vim-colors-solarized'
+Bundle 'chriskempson/vim-tomorrow-theme'
+Bundle 'KeitaNakamura/neodark.vim'
+Bundle 'jansenfuller/crayon'
+Bundle 'vivkin/flatland.vim'
+Bundle 'dikiaap/minimalist'
+Bundle 'zacanger/angr.vim'
+Bundle 'kamwitsta/nordisk'
+Bundle 'kamwitsta/mythos'
 Bundle 'zeis/vim-kolor'
 
 " PLUGIN STUFF
 
 " load emmet
-autocmd FileType html,css,scss,sass,markdown EmmetInstall
+autocmd FileType html,php,css,scss,sass,markdown EmmetInstall
 
 " colours
 filetype plugin indent on
@@ -46,6 +57,8 @@ syntax enable
 set background=dark
 let g:solarized_termcolors = 256
 
+"colorscheme Tomorrow-Night
+"colorscheme neodark
 colorscheme solarized
 " retains colours even when reloading .vimrc (no need to reload .gvimrc too)
 if has("gui_running")
@@ -57,11 +70,12 @@ endif
 
 set number                              " line numbers
 set autoindent                          " nice auto-indentation
+set autoread                            " read changes (handy when git updates files)
 set lazyredraw                          " minimal screen redrawing
 set incsearch                           " auto-complete searching
 set ignorecase                          " case-insensitive searching
 set cursorline                          " highlight cursor line
-set modeline                            " let modeslines be used (for root user too)
+set modeline                            " let modelines be used (for root user too)
 set hlsearch                            " highlight search matches
 set wildmenu                            " wild menu tab completion
 set mousef                              " it's like terminator!
@@ -82,7 +96,10 @@ set viminfo=                            " no mo' .viminfo
 set list                                " use custom special strings
 set listchars=tab:\ \ ,trail:·,extends:… " show dots for trailing spaces, and other stuff
 set omnifunc=syntaxcomplete#Complete    " suddenly i feel like vim can be taken seriously
+
 set noswapfile                          " disable swap files
+set backupdir=~/.vim/tmp,.              " prevent vim from cluttering working directories
+set directory=~/.vim/tmp,.              " ditto
 
 " LETTING
 " (this is mostly plugin configuration)
@@ -108,7 +125,7 @@ let g:user_emmet_settings = {
 \     },
 \   },
 \   'css' : {
-\     'filters': '',
+\     'filters': 'fc',
 \   },
 \   'scss' : {
 \     'filters': 'fc',
@@ -230,8 +247,6 @@ noremap <Leader>vv :tabnew<Space>~/.vimrc<CR>
 noremap <Leader>vg :tabnew<Space>~/.gvimrc<CR>
 noremap <Leader>n <Esc>:let<Space>@/=""<CR>
 noremap <Leader>h ^
-noremap <Leader>j G
-noremap <Leader>k gg
 noremap <Leader>l $
 
 " copy/paste to/from system keyboard
@@ -284,9 +299,7 @@ nnoremap T :tabnew<Space>
 " use markdown filetype and wrap for markdown
 autocmd BufRead,BufNewFile *.md,*.markdown set ft=markdown wrap
 
-" show ruler for python
-autocmd BufRead,BufNewFile *.py set colorcolumn=80 textwidth=79
-
 " show ruler for some languages
-autocmd BufRead,BufNewFile *.js,*.css,*.rb,*.php,*.sh,*.vimrc set colorcolumn=81 textwidth=80
+autocmd BufRead,BufNewFile *.py set colorcolumn=80 textwidth=79
+autocmd BufRead,BufNewFile *.js,*.css,*.sass,*.scss,*.rb,*.php,*.sh,*.txt,*.md,*.markdown set colorcolumn=81 textwidth=80
 autocmd BufRead,BufNewFile *.html,*.htm set colorcolumn=121 textwidth=0
