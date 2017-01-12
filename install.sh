@@ -14,5 +14,5 @@ if [[ -d ~/.vim/snips/ ]]; then
 elif [[ -d ~/.vim/UltiSnips/ ]]; then
     cp -i snips/* ~/.vim/UltiSnips/
 else
-    mkdir ~/.vim/snips/ && cp -i snips/* ~/.vim/snips/
+    mkdir -p ~/.vim/snips/ && cp -i snips/* ~/.vim/snips/
 fi

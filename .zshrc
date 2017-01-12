@@ -1,9 +1,11 @@
 # set up the prompt
 
-if [[ -f ~/.mac-shell-rc ]]; then
-	source ~/.mac-shell-rc
-fi
-source ~/.shell-aliases
+configs=(~/.profile ~/.shell-aliases ~/.mac-shell-rc)
+for config in "${configs[@]}"; do
+    [[ -f "$config" ]] && source "$config"
+done
+
+TERM="xterm-256color"
 
 autoload -Uz promptinit
 promptinit
@@ -47,20 +49,20 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 # powerline stuff
 
 if [[ "text$powerline_script" == "text" ]]; then
-	powerline_script="~/source/python/powerline-shell/powerline-shell.py"
+    powerline_script="~/source/python/powerline-shell/powerline-shell.py"
 fi
 
 function powerline_precmd() {
-	PS1=`$powerline_script --shell zsh`
+    PS1=`$powerline_script --shell zsh`
 }
 
 function install_powerline_precmd() {
-	for s in "${precmd_functions[@]}"; do
-		if [ "$s" = "powerline_precmd" ]; then
-			return
-		fi
-	done
-	precmd_functions+=(powerline_precmd)
+    for s in "${precmd_functions[@]}"; do
+        if [ "$s" = "powerline_precmd" ]; then
+            return
+        fi
+    done
+    precmd_functions+=(powerline_precmd)
 }
 
 install_powerline_precmd

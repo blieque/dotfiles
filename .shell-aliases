@@ -6,7 +6,7 @@ alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
 # listing shizzle
-alias ls='ls -GpFh'
+alias ls='ls --indicator-style=slash --human-readable --classify --color=auto'
 alias ll='ls -l'
 alias la='ls -A'
 alias lal='ls -Al'
@@ -56,7 +56,6 @@ alias mit='cp /home/b/documents/resources/MIT-LICENSE.md LICENSE.md'
 alias hq='/home/b/.hairquest/hairquest.sh'
 alias ut='sudo /opt/utorrent/utserver &'
 alias to='sudo systemctl reload nginx'
-alias vim='mvim -v'
 alias crlf='grep  -rl * | grep -v Binary'
 alias clion='/opt/clion/bin/clion.sh'
 alias sublime='/opt/sublime-text-2/sublime_text'
