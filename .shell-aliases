@@ -6,7 +6,7 @@ alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
 # listing shizzle
-alias ls='ls --indicator-style=slash --human-readable --classify --color=auto'
+alias ls='ls --color=auto --indicator-style=slash --human-readable --classify --group-directories-first'
 alias ll='ls -l'
 alias la='ls -A'
 alias lal='ls -Al'
@@ -50,7 +50,10 @@ alias mx='chmod +x'
 alias ag='apt-get'
 alias cpd='cp --parents'
 alias spf='sudo php5-fpm --fpm-config /etc/php5/fpm/php-fpm.conf &'
-alias mit='cp /home/b/documents/resources/MIT-LICENSE.md LICENSE.md'
+alias license-mit='cp /home/b/documents/resources/MIT-LICENSE.md LICENSE.md'
+alias license-isc='cp /home/b/documents/resources/ISC-LICENSE.md LICENSE.md'
+alias license-gpl='cp /home/b/documents/resources/GPL-LICENSE.md LICENSE.md'
+alias license-ofl='cp /home/b/documents/resources/SIL-OFL-LICENSE.md LICENSE.md'
 
 # launching + software
 alias hq='/home/b/.hairquest/hairquest.sh'

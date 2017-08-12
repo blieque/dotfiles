@@ -4,15 +4,10 @@ case $- in
       *) return;;
 esac
 
-configs=(~/.profile ~/.shell-aliases)
-for config in "${configs[@]}"; do
-    [[ -f "$config" ]] && source "$config"
-done
-
+[[ -f ~/.profile ]] && source ~/.profile
 reset=$(tput sgr0)
 PS1="\[\e[38;5;207m\]\u\[\e[38;5;238m\]@\[\e[38;5;63m\]\H\[$reset\]: \[\e[38;5;111m\e[48;5;234m\] \w $reset \e[38;5;250m\$$reset "
 
-TERM="xterm-256color"
 
 # history
 HISTCONTROL=ignoreboth

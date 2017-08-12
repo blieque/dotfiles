@@ -31,10 +31,13 @@ Bundle 'SirVer/ultisnips'
 Bundle 'honza/vim-snippets'
 
 " make things perty
+Bundle 'jeaye/color_coded'
+Bundle 'justinmk/vim-syntax-extra'
 Bundle 'StanAngeloff/php.vim'
 Bundle 'pangloss/vim-javascript'
 Bundle 'nathanaelkane/vim-indent-guides'
 
+" color schemes
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'chriskempson/vim-tomorrow-theme'
 Bundle 'KeitaNakamura/neodark.vim'
@@ -49,7 +52,7 @@ Bundle 'zeis/vim-kolor'
 " PLUGIN STUFF
 
 " load emmet
-autocmd FileType html,php,css,scss,sass,markdown EmmetInstall
+autocmd FileType html,htm,hbs,handlebars,markdown,css,scss,sass EmmetInstall
 
 " colours
 filetype plugin indent on
@@ -58,8 +61,6 @@ syntax enable
 set background=dark
 let g:solarized_termcolors = 256
 
-"colorscheme Tomorrow-Night
-"colorscheme neodark
 colorscheme solarized
 " retains colours even when reloading .vimrc (no need to reload .gvimrc too)
 if has("gui_running")
@@ -249,6 +250,8 @@ noremap <Leader>vv :tabnew<Space>~/.vimrc<CR>
 noremap <Leader>vg :tabnew<Space>~/.gvimrc<CR>
 noremap <Leader>n <Esc>:let<Space>@/=""<CR>
 noremap <Leader>h ^
+noremap <Leader>j G
+noremap <Leader>k gg
 noremap <Leader>l $
 
 " copy/paste to/from system keyboard
@@ -301,7 +304,12 @@ nnoremap T :tabnew<Space>
 " use markdown filetype and wrap for markdown
 autocmd BufRead,BufNewFile *.md,*.markdown set ft=markdown wrap
 
-" show ruler for some languages
+" use html filetype for templating languages
+autocmd BufRead,BufNewFile *.hbs,*.handlebars set ft=html wrap
+
+" show ruler for python
 autocmd BufRead,BufNewFile *.py set colorcolumn=80 textwidth=79
-autocmd BufRead,BufNewFile *.js,*.css,*.sass,*.scss,*.rb,*.php,*.sh,*.c,*.h,*.txt,*.md,*.markdown,.vimrc set colorcolumn=81 textwidth=80
-autocmd BufRead,BufNewFile *.html,*.htm set colorcolumn=121 textwidth=0
+
+" show ruler for some languages
+autocmd BufRead,BufNewFile *.js,*.css,*.rb,*.php,*.sh,*.c,*.h,.vimrc set colorcolumn=81 textwidth=80
+autocmd BufRead,BufNewFile *.html,*.htm,*.hbs,*.handlebars set colorcolumn=121 textwidth=0

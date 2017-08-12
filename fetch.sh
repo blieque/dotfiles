@@ -1,9 +1,9 @@
 #!/bin/bash
 
-cp ~/.vimrc .
-cp ~/.gvimrc .
-cp ~/.bashrc .
-cp ~/.zshrc .
-cp ~/.shell-aliases .
-cp ~/.mac-shell-rc .
-cp ~/.vim/snips/* snips/
+[[ -f ~/.vimrc ]] && cp ~/.vimrc .
+[[ -f ~/.gvimrc ]] && cp ~/.gvimrc .
+[[ -f ~/.bashrc ]] && cp ~/.bashrc .
+[[ -f ~/.zshrc ]] && cp ~/.zshrc .
+[[ -f ~/.shell-aliases ]] && cp ~/.shell-aliases .
+[[ -f ~/.mac-shell-rc ]] && cp ~/.mac-shell-rc .
+[[ -d ~/.vim/snips && "$(ls -A ~/.vim/snips)" ]] && cp ~/.vim/snips/* snips/

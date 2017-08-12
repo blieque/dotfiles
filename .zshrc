@@ -1,9 +1,6 @@
 # set up the prompt
 
-configs=(~/.profile ~/.shell-aliases ~/.mac-shell-rc)
-for config in "${configs[@]}"; do
-    [[ -f "$config" ]] && source "$config"
-done
+[[ -f ~/.profile ]] && source ~/.profile
 
 TERM="xterm-256color"
 
@@ -12,10 +9,10 @@ promptinit
 prompt adam1
 
 if [[ `uname` == 'Darwin' ]]; then
-	bindkey -e
-	bindkey "${terminfo[khome]}" beginning-of-line
-	bindkey "${terminfo[kend]}" end-of-line
-	bindkey "${terminfo[kdch1]}" delete-char
+    bindkey -e
+    bindkey "${terminfo[khome]}" beginning-of-line
+    bindkey "${terminfo[kend]}" end-of-line
+    bindkey "${terminfo[kdch1]}" delete-char
 fi
 
 setopt histignorealldups sharehistory
@@ -48,19 +45,17 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
 # powerline stuff
 
-if [[ "text$powerline_script" == "text" ]]; then
-    powerline_script="~/source/python/powerline-shell/powerline-shell.py"
+if [[ "$powerline_script" == "" ]]; then
+    powerline_script=~/source/python/powerline-shell/powerline-shell.py
 fi
 
 function powerline_precmd() {
-    PS1=`$powerline_script --shell zsh`
+    PS1=$("$powerline_script" --shell zsh)
 }
 
 function install_powerline_precmd() {
     for s in "${precmd_functions[@]}"; do
-        if [ "$s" = "powerline_precmd" ]; then
-            return
-        fi
+        [[ "$s" == "powerline_precmd" ]] && return
     done
     precmd_functions+=(powerline_precmd)
 }

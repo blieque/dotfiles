@@ -36,7 +36,7 @@ A selection of dotfiles and other little Linux scripty things.
 
     * `themes/` holds themes I have written for [Powerline Shell](https://github.com/blieque/powerline-shell).
 
-        * `hollow.py` is a theme I made for Powerline Shell. I used the name Hollow because it was listed as a synonym of "meaningless", and the name of this theme is just that. To use the theme, clone the `powerline-shell` repository, place `hollow.py` in the `themes` directory, and change the `THEME` line in `config.py` to `THEME = 'hollow'`. Run the `install.py` script and then use the newly generated `powerline-shell.py` script.
+        * `hollow.py` is a theme I made for Powerline Shell. To use the theme, clone the `powerline-shell` repository, place `hollow.py` in the `themes` directory, and change the `THEME` line in `config.py` to `THEME = 'hollow'`. Run the `install.py` script and then use the newly generated `powerline-shell.py` script.
 
 ![Hollow colour scheme screen shot](https://raw.githubusercontent.com/blieque/dotfiles/master/images/hollow-screenshot-8.png)
 
