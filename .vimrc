@@ -24,6 +24,7 @@ Bundle 'vim-syntastic/syntastic'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'terryma/vim-multiple-cursors'
 Bundle 'tpope/vim-sleuth'
+Bundle 'posva/vim-vue'
 " hot damn
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'rdnetto/YCM-Generator'
@@ -116,10 +117,9 @@ let g:multi_cursor_skip_key = '<C-d>'
 let g:multi_cursor_quit_key = '<C-x>'
 
 " emmet key bindings and config
-"let g:user_emmet_leader_key = '<Tab>'
 let g:user_emmet_leader_key = ','
 let g:user_emmet_install_global = 0
-let g:user_emmet_mode = 'i'
+let g:user_emmet_mode = 'n'
 let g:user_emmet_settings = {
 \   'html': {
 \     'default_attributes': {
@@ -144,9 +144,22 @@ let g:lightline = {
 \   'separator': { 'left': '', 'right': '' },
 \   'subseparator': { 'left': '', 'right': '' },
 \   'active': {
-\      'right': [ [ 'lineinfo' ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype', 'syntastic' ] ]
-\    }
+\     'right': [
+\       [ 'lineinfo' ],
+\       [ 'percent' ],
+\       [ 'fileformat', 'fileencoding', 'filetype', 'syntastic' ]
+\     ]
+\   },
+\   'tabline': {
+\     'right': [ ]
+\   },
+\   'tab': {
+\     'active': [ 'filename', 'modified' ],
+\     'inactive': [ 'filename', 'modified' ]
+\   }
 \ }
+"\   'separator': { 'left': '', 'right': '' },
+"\   'subseparator': { 'left': '│', 'right': '│' },
 "\      'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ], ['ctrlpmark'] ],
 "\   'colorscheme': 'solarized_dark',
 
@@ -164,8 +177,8 @@ let g:indent_guides_enable_on_vim_startup = 1 " like, wtf?
 let g:indent_guides_auto_colors = 0 " just for gvim
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
-hi IndentGuidesOdd  ctermbg=234
-hi IndentGuidesEven ctermbg=234
+hi IndentGuidesOdd  ctermbg = 234
+hi IndentGuidesEven ctermbg = 234
 
 " syntastic config
 let g:syntastic_always_populate_loc_list = 1
@@ -179,16 +192,19 @@ let g:ycm_key_list_previous_completion = ['<Up>']
 let g:ycm_global_ycm_extra_conf = "~/.ycm_extra_conf.py"
 
 " ultisnips config
-let g:UltiSnipsExpandTrigger="<S-Tab>"
-let g:UltiSnipsJumpForwardTrigger="<Tab>"
-let g:UltiSnipsJumpBackwardTrigger="<C-z>"
-let g:UltiSnipsEditSplit="vertical"
-let g:UltiSnipsSnippetDirectories=["snips", "UltiSnips"]
+let g:UltiSnipsExpandTrigger = "<S-Tab>"
+let g:UltiSnipsJumpForwardTrigger = "<Tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<C-z>"
+let g:UltiSnipsEditSplit = "vertical"
+let g:UltiSnipsSnippetDirectories = ["snips", "UltiSnips"]
+
+" vim-vue config
+let g:vue_disable_pre_processors = 1
 
 " MAPPING
 
 " just naice
-nore ; :
+noremap ; :
 
 " black-hole delete
 noremap x "_d
@@ -204,13 +220,7 @@ nmap U :redo<CR>
 " easy escape from insert/visual mode, and easy ending of lines
 inoremap jj <Esc>
 inoremap JJ <Esc>
-vnoremap ii <Esc>
-vnoremap II <Esc>
-"imap ,, <End>,<CR>
 inoremap ;; <End>;
-" these two are better done with snippets
-imap fn<Tab> function(){<CR><Up><End><Left><Left>
-imap fn<Tab><Tab> function(){<CR>
 " for writing liquid
 inoremap {% {%<Space><Space>%}<Left><Left><Left>
 
@@ -228,35 +238,34 @@ vnoremap <C-n> "xy:%s:<C-r>x::g<Left><Left>
 vnoremap ( "zdi()<Esc>"zPl
 vnoremap { "zdi{}<Esc>"zPl
 vnoremap [ "zdi[]<Esc>"zPl
-vnoremap < "zdi<><Esc>"zPl
 vnoremap " "zdi""<Esc>"zPl
 vnoremap ' "zdi''<Esc>"zPl
 vnoremap ` "zdi``<Esc>"zPl
 " still allow interaction with other registers
 noremap ¬ "
 
-" ...make normal indentation still work
-vnoremap < <
-vnoremap > >
+" easy tab moving
+nnoremap - <Esc>:tabp<CR>
+nnoremap = <Esc>:tabn<CR>
 
-" moving around, splits, undo, [redraw], general leader stuff
-noremap <Leader>o <Esc>:tabp<CR>
-noremap <Leader>p <Esc>:tabn<CR>
-noremap <Leader>t <Esc>:tabnew<Space>
-noremap <Leader>r :redr!<CR>
-noremap <Leader>rv :so<Space>~/.vimrc<CR>
-noremap <Leader>rg :so<Space>~/.gvimrc<CR>
-noremap <Leader>vv :tabnew<Space>~/.vimrc<CR>
-noremap <Leader>vg :tabnew<Space>~/.gvimrc<CR>
-noremap <Leader>n <Esc>:let<Space>@/=""<CR>
-noremap <Leader>h ^
-noremap <Leader>j G
-noremap <Leader>k gg
-noremap <Leader>l $
+" clear search
+nnoremap <Leader>n <Esc>:let @/=""<CR>
+
+" shortcut to vim configs
+nnoremap <Leader>rv :so ~/.vimrc<CR>
+nnoremap <Leader>rg :so ~/.gvimrc<CR>
+nnoremap <Leader>vv :tabnew ~/.vimrc<CR>
+nnoremap <Leader>vg :tabnew ~/.gvimrc<CR>
+
+" redraw the ui
+nnoremap <Leader>r :redr!<CR>
+
+" clobber annoying emmet mapping
+"unmap ,j
 
 " copy/paste to/from system keyboard
-vnoremap <Leader>x "+dd
-vnoremap <Leader>c "+yy
+vnoremap <Leader>x "+d
+vnoremap <Leader>c "+y
 nnoremap <Leader>x "+dd
 nnoremap <Leader>c "+yy
 nnoremap <Leader>v "+p
@@ -268,14 +277,8 @@ nnoremap <S-CR> O<ESC>
 " more intuitive movement around files
 noremap j gj
 noremap k gk
-noremap 0 g0
-noremap $ g$
-noremap <Home> g<Home>
-noremap <Home><Home> ^
-noremap <End> g<End>
-noremap <End><End> $
-"nnoremap A g<End>a
-nnoremap I g<Home>i
+noremap <Home> ^
+noremap <Home><Home> 0
 
 " more familiar indentation
 nnoremap <Tab> V>
@@ -304,12 +307,15 @@ nnoremap T :tabnew<Space>
 " use markdown filetype and wrap for markdown
 autocmd BufRead,BufNewFile *.md,*.markdown set ft=markdown wrap
 
+" use html, css, scss, etc. settings in vue components
+autocmd BufRead,BufNewFile *.vue set ft=vue.html.javascript.scss
+
 " use html filetype for templating languages
-autocmd BufRead,BufNewFile *.hbs,*.handlebars set ft=html wrap
+autocmd BufRead,BufNewFile *.vue,*.hbs,*.handlebars set ft=html
 
 " show ruler for python
 autocmd BufRead,BufNewFile *.py set colorcolumn=80 textwidth=79
 
 " show ruler for some languages
-autocmd BufRead,BufNewFile *.js,*.css,*.rb,*.php,*.sh,*.c,*.h,.vimrc set colorcolumn=81 textwidth=80
+autocmd BufRead,BufNewFile *.js,*.css,*.rb,*.php,*.sh,*.c,*.h,*.md,*.markdown,*.txt,.vimrc set colorcolumn=81 textwidth=80
 autocmd BufRead,BufNewFile *.html,*.htm,*.hbs,*.handlebars set colorcolumn=121 textwidth=0

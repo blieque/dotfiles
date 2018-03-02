@@ -1,13 +1,11 @@
-# set up the prompt
-
 [[ -f ~/.profile ]] && source ~/.profile
 
 TERM="xterm-256color"
 
-autoload -Uz promptinit
-promptinit
-prompt adam1
+# Disable XON/XOFF flow control, which pauses processes on Ctrl+S.
+stty -ixon
 
+# Detect macOS and tweak some key mappings for it
 if [[ `uname` == 'Darwin' ]]; then
     bindkey -e
     bindkey "${terminfo[khome]}" beginning-of-line
@@ -17,12 +15,12 @@ fi
 
 setopt histignorealldups sharehistory
 
-# keep 1000 lines of history within the shell and save it to ~/.zsh_history:
+# Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
 HISTSIZE=1000
 SAVEHIST=1000
 HISTFILE=~/.zsh_history
 
-# use modern completion system
+# Use modern completion system
 autoload -Uz compinit
 compinit
 
@@ -43,7 +41,12 @@ zstyle ':completion:*' verbose true
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
-# powerline stuff
+# Set up basic prompt
+autoload -Uz promptinit
+promptinit
+prompt adam1
+
+# Set up Powerline prompt
 
 if [[ "$powerline_script" == "" ]]; then
     powerline_script=~/source/python/powerline-shell/powerline-shell.py

@@ -6,18 +6,17 @@ alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
 # listing shizzle
-alias ls='ls --color=auto --indicator-style=slash --human-readable --classify --group-directories-first'
+alias ls='ls --color=auto --indicator-style=slash --human-readable --classify --dereference-command-line --group-directories-first'
 alias ll='ls -l'
-alias la='ls -A'
-alias lal='ls -Al'
-alias lla='lal'
+alias la='ls --almost-all'
+alias lla='ll --almost-all'
+alias lal='lla'
 
 # exiting in style
-alias ecksit='exit'
 alias e='exit'
 
 # megaupgrade
-alias mu='sudo apt-get update && sudo apt-get dist-upgrade && sudo apt-get autoremove'
+alias mu='sudo apt update && sudo apt dist-upgrade && sudo apt autoremove'
 
 # git
 alias gits='git status'
@@ -47,9 +46,6 @@ alias s='sudo'
 alias c='clear'
 alias v='vim ~/.vimrc'
 alias mx='chmod +x'
-alias ag='apt-get'
-alias cpd='cp --parents'
-alias spf='sudo php5-fpm --fpm-config /etc/php5/fpm/php-fpm.conf &'
 alias license-mit='cp /home/b/documents/resources/MIT-LICENSE.md LICENSE.md'
 alias license-isc='cp /home/b/documents/resources/ISC-LICENSE.md LICENSE.md'
 alias license-gpl='cp /home/b/documents/resources/GPL-LICENSE.md LICENSE.md'
@@ -57,8 +53,6 @@ alias license-ofl='cp /home/b/documents/resources/SIL-OFL-LICENSE.md LICENSE.md'
 
 # launching + software
 alias hq='/home/b/.hairquest/hairquest.sh'
-alias ut='sudo /opt/utorrent/utserver &'
 alias to='sudo systemctl reload nginx'
 alias crlf='grep  -rl * | grep -v Binary'
-alias clion='/opt/clion/bin/clion.sh'
 alias sublime='/opt/sublime-text-2/sublime_text'
