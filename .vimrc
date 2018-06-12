@@ -53,7 +53,7 @@ Bundle 'zeis/vim-kolor'
 " PLUGIN STUFF
 
 " load emmet
-autocmd FileType html,htm,hbs,handlebars,markdown,css,scss,sass EmmetInstall
+autocmd FileType html,php,markdown,css,sass EmmetInstall
 
 " colours
 filetype plugin indent on
