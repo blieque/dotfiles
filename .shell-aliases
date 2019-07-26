@@ -1,24 +1,23 @@
-# user-added
+# Shell
 
-# colours!
-alias grep='grep --color=auto --ignore-case'
-alias fgrep='fgrep --color=auto'
-alias egrep='egrep --color=auto'
+# Shortcuts
+alias e='exit'
+alias v='vim ~/.vimrc'
+alias mx='chmod +x'
+alias to='sudo systemctl reload nginx'
+alias crlf='grep  -rl * | grep -v Binary'
 
-# listing shizzle
+# `ls`
 alias ls='ls --color=auto --indicator-style=slash --human-readable --classify --dereference-command-line --group-directories-first'
 alias ll='ls -l'
 alias la='ls --almost-all'
 alias lla='ll --almost-all'
 alias lal='lla'
 
-# exiting in style
-alias e='exit'
+# `grep`
+alias grep='grep --color=auto'
 
-# megaupgrade
-alias mu='sudo apt update && sudo apt dist-upgrade && sudo apt autoremove'
-
-# git
+# `git`
 alias gits='git status'
 alias gitl='git log'
 alias gita='git add'
@@ -26,6 +25,10 @@ alias gitaa='git add --all'
 alias gitd='git diff'
 alias gitds='git diff --staged'
 alias gitr='git reset'
+alias gitst='git stash'
+alias gitsta='git stash apply'
+alias gitstd='git stash drop'
+alias gitstp='git stash pop'
 alias gitc='git commit'
 alias gitca='git commit --amend'
 alias gitch='git checkout'
@@ -34,25 +37,20 @@ alias gitb='git branch'
 alias gitm='git merge'
 alias gitp='git push'
 alias gitpl='git pull'
+alias gitf='git fetch'
+alias gitt='git tag'
 
-# jekyll
+# APT megaupgrade
+alias mu='sudo apt update && sudo apt dist-upgrade && sudo apt autoremove'
+
+# Jekyll
 alias post='JEKYLL_POST_DATE=`date +%Y-%m-%d` && cp /home/b/documents/jekyll-post-template.md /srv/hosts/dev.github.blieque/_posts/$JEKYLL_POST_DATE-slug.md && vim /srv/hosts/dev.github.blieque/_posts/$JEKYLL_POST_DATE-slug.md && cd /srv/hosts/dev.github.blieque/_posts/'
-alias jekyll-new='cp -r /home/b/documents/resources/jekyll-basic . && mv jekyll-basic'
+alias jekyll-new='cp -r ~/documents/resources/jekyll-basic . && mv jekyll-basic'
 alias jekyll-b='bundler exec jekyll build'
 alias jekyll-bw='jekyll-b --watch'
 
-# tools/shortcuts
-alias s='sudo'
-alias c='clear'
-alias v='vim ~/.vimrc'
-alias mx='chmod +x'
-alias license-mit='cp /home/b/documents/resources/MIT-LICENSE.md LICENSE.md'
-alias license-isc='cp /home/b/documents/resources/ISC-LICENSE.md LICENSE.md'
-alias license-gpl='cp /home/b/documents/resources/GPL-LICENSE.md LICENSE.md'
-alias license-ofl='cp /home/b/documents/resources/SIL-OFL-LICENSE.md LICENSE.md'
-
-# launching + software
-alias hq='/home/b/.hairquest/hairquest.sh'
-alias to='sudo systemctl reload nginx'
-alias crlf='grep  -rl * | grep -v Binary'
-alias sublime='/opt/sublime-text-2/sublime_text'
+# Quick licensing
+alias license-mit='cp ~/documents/resources/MIT-LICENSE.md LICENSE.md'
+alias license-isc='cp ~/documents/resources/ISC-LICENSE.md LICENSE.md'
+alias license-gpl='cp ~/documents/resources/GPL-LICENSE.md LICENSE.md'
+alias license-ofl='cp ~/documents/resources/SIL-OFL-LICENSE.md LICENSE.md'
