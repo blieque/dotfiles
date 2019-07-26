@@ -53,7 +53,7 @@ Bundle 'zeis/vim-kolor'
 " PLUGIN STUFF
 
 " load emmet
-autocmd FileType html,php,markdown,css,sass EmmetInstall
+autocmd FileType html,php,markdown,css,sass,scss EmmetInstall
 
 " colours
 filetype plugin indent on
@@ -95,6 +95,7 @@ set sidescroll=16                       " as above, but horizontal and 16 column
 set spelllang=en_gb                     " set spellchecking to british english
 set virtualedit=onemore                 " cursor can sit on the EOL character
 set timeoutlen=450                      " quicker key sequences, as default is 1000
+set tabpagemax=100                      " open more tabs at once with '-p'
 set viminfo=                            " no mo' .viminfo
 set list                                " use custom special strings
 set listchars=tab:\ \ ,trail:·,extends:… " show dots for trailing spaces, and other stuff
@@ -305,17 +306,20 @@ nnoremap T :tabnew<Space>
 " COMMANDS
 
 " use markdown filetype and wrap for markdown
-autocmd BufRead,BufNewFile *.md,*.markdown set ft=markdown wrap
+autocmd BufRead,BufNewFile *.md,*.markdown setlocal filetype=markdown wrap
 
 " use html, css, scss, etc. settings in vue components
-autocmd BufRead,BufNewFile *.vue set ft=vue.html.javascript.scss
+autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.scss
 
 " use html filetype for templating languages
-autocmd BufRead,BufNewFile *.vue,*.hbs,*.handlebars set ft=html
+autocmd BufRead,BufNewFile *.vue,*.hbs,*.handlebars setlocal filetype=html
 
 " show ruler for python
-autocmd BufRead,BufNewFile *.py set colorcolumn=80 textwidth=79
+autocmd BufRead,BufNewFile *.py setlocal colorcolumn=80 textwidth=79
 
 " show ruler for some languages
-autocmd BufRead,BufNewFile *.js,*.css,*.rb,*.php,*.sh,*.c,*.h,*.md,*.markdown,*.txt,.vimrc set colorcolumn=81 textwidth=80
-autocmd BufRead,BufNewFile *.html,*.htm,*.hbs,*.handlebars set colorcolumn=121 textwidth=0
+autocmd BufRead,BufNewFile *.js,*.css,*.sass,*.scss,*.vue,*.rb,*.php,*.sh,*.c,*.h,*.md,*.markdown,*.txt,.vimrc setlocal colorcolumn=81 textwidth=80
+autocmd BufRead,BufNewFile *.html,*.htm,*.hbs,*.handlebars setlocal colorcolumn=121 textwidth=0
+
+" set formatting for git commits
+autocmd FileType gitcommit setlocalocal tabstop=2 shiftwidth=2
