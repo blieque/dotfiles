@@ -22,7 +22,7 @@ Bundle 'jiangmiao/auto-pairs'
 Bundle 'mattn/emmet-vim'
 Bundle 'vim-syntastic/syntastic'
 Bundle 'scrooloose/nerdcommenter'
-Bundle 'terryma/vim-multiple-cursors'
+"Bundle 'terryma/vim-multiple-cursors'
 Bundle 'tpope/vim-sleuth'
 Bundle 'posva/vim-vue'
 " hot damn
@@ -32,7 +32,7 @@ Bundle 'SirVer/ultisnips'
 Bundle 'honza/vim-snippets'
 
 " make things perty
-Bundle 'jeaye/color_coded'
+"Bundle 'jeaye/color_coded'
 Bundle 'justinmk/vim-syntax-extra'
 Bundle 'StanAngeloff/php.vim'
 Bundle 'pangloss/vim-javascript'
@@ -306,20 +306,20 @@ nnoremap T :tabnew<Space>
 " COMMANDS
 
 " use markdown filetype and wrap for markdown
-autocmd BufRead,BufNewFile *.md,*.markdown setlocal filetype=markdown wrap
+autocmd BufRead,BufNewFile *.md,*.markdown setl filetype=markdown wrap
 
 " use html, css, scss, etc. settings in vue components
-autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.scss
+autocmd BufRead,BufNewFile *.vue setl filetype=vue.html.javascript.scss
 
 " use html filetype for templating languages
-autocmd BufRead,BufNewFile *.vue,*.hbs,*.handlebars setlocal filetype=html
+autocmd BufRead,BufNewFile *.hbs,*.handlebars set filetype=html
 
 " show ruler for python
-autocmd BufRead,BufNewFile *.py setlocal colorcolumn=80 textwidth=79
+autocmd BufRead,BufNewFile *.py setl colorcolumn=80 textwidth=79
 
 " show ruler for some languages
-autocmd BufRead,BufNewFile *.js,*.css,*.sass,*.scss,*.vue,*.rb,*.php,*.sh,*.c,*.h,*.md,*.markdown,*.txt,.vimrc setlocal colorcolumn=81 textwidth=80
-autocmd BufRead,BufNewFile *.html,*.htm,*.hbs,*.handlebars setlocal colorcolumn=121 textwidth=0
+autocmd BufRead,BufNewFile *.js,*.css,*.sass,*.scss,*.vue,*.rb,*.php,*.sh,*.c,*.h,*.md,*.markdown,*.txt,.vimrc setl colorcolumn=81,101 textwidth=100
+autocmd BufRead,BufNewFile *.html,*.htm,*.hbs,*.handlebars setl colorcolumn=121 textwidth=0
 
 " set formatting for git commits
-autocmd FileType gitcommit setlocalocal tabstop=2 shiftwidth=2
+autocmd FileType gitcommit setl tabstop=2 shiftwidth=2
